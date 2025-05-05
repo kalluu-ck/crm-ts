@@ -5,17 +5,17 @@ const fs = require("fs");
 const SRC_DIR = "src";
 const srcDirPath = path.resolve(__dirname, SRC_DIR);
  
-// This function will build the `entry` that webpack understands
+// This function will build the `entry` that webpack understands.
 // See: https://webpack.js.org/configuration/entry-context/
 // This will loop through all folders and its sub-folders 
-// (recursively) under the "src" folder
+// (recursively) under the "src" folder.
 // For each folder: 
-//  - If the folder contains an "index.ts" files, 
+//  - If the folder contains an "index.ts" file, 
 //    that means this folder will be the entry.
-//    The library we want to build for each entity 
+//    This is the library we want to build for each entity 
 //    as we want to have a js file per entity
 //  - Otherwise, skip (means that the current folder is not the entry, 
-//    it just contains shared code)
+//    it just contains the shared/common code)
 function getEntries(dirPath, entry = {}) {
   const fileList = fs.readdirSync(dirPath);
  
@@ -41,7 +41,7 @@ const config = {
   },
   output: {
     // See: https://webpack.js.org/configuration/output/#outputlibrary
-    // This would impact how we use our library in Power Apps
+    // This would impact how we use our library in Power Apps,
     // e.g. To call the function `contactOnLoad` of Contact library, 
     // we specify the handler name as `Contact.contactOnLoad`
     library: "[name]", 
